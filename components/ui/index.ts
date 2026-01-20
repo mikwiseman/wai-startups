@@ -12,3 +12,4 @@ export { Input, type InputProps } from "./Input";
 export { Textarea, type TextareaProps } from "./Textarea";
 export { Skeleton, SkeletonCard, SkeletonIdeaCard } from "./Skeleton";
 export { Modal, type ModalProps } from "./Modal";
+export { FunLoader } from "./FunLoader";

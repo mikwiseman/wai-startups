@@ -4,11 +4,11 @@ import { useState, useEffect } from "react";
 import { WizardLayout } from "@/components/wizard";
 import { DetailedIdeaCard } from "@/components/ideas";
 import { ExportButtons } from "@/components/export";
-import { Button, SkeletonIdeaCard } from "@/components/ui";
+import { Button, SkeletonIdeaCard, FunLoader } from "@/components/ui";
 import { useWizardStore } from "@/store/useWizardStore";
 import { useStreamingResponse, parseIdeasFromResponse } from "@/hooks/useStreamingResponse";
 import { DetailedStartupIdea } from "@/types/wizard";
-import { Sparkles, RefreshCw, RotateCcw, CheckCircle } from "lucide-react";
+import { Sparkles, RotateCcw, CheckCircle, RefreshCw } from "lucide-react";
 
 export default function Step5Page() {
   const {
@@ -106,12 +106,7 @@ export default function Step5Page() {
         {/* Loading state */}
         {isStreaming && displayIdeas.length === 0 && (
           <div className="space-y-4">
-            <div className="flex items-center gap-2 text-gray-600">
-              <div className="animate-spin">
-                <RefreshCw className="w-5 h-5" />
-              </div>
-              <span>Генерируем финальные рекомендации...</span>
-            </div>
+            <FunLoader />
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <SkeletonIdeaCard />
               <SkeletonIdeaCard />
@@ -186,8 +181,8 @@ export default function Step5Page() {
 
             {/* Streaming indicator */}
             {isStreaming && (
-              <div className="text-center text-gray-500 text-sm">
-                <span className="streaming-cursor">Генерация...</span>
+              <div className="flex justify-center">
+                <FunLoader />
               </div>
             )}
           </>

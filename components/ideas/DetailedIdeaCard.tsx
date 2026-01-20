@@ -1,7 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import { DetailedStartupIdea } from "@/types/wizard";
-import { Trophy, Target, Lightbulb, Clock, Rocket, TrendingUp } from "lucide-react";
+import { Trophy, Target, Lightbulb, Clock, Rocket, TrendingUp, Copy, FileJson, FileText, Check } from "lucide-react";
+import { formatIdeaAsText } from "@/components/export/ExportButtons";
 
 interface DetailedIdeaCardProps {
   idea: DetailedStartupIdea;
@@ -9,13 +11,78 @@ interface DetailedIdeaCardProps {
 }
 
 export function DetailedIdeaCard({ idea, index }: DetailedIdeaCardProps) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    const content = formatIdeaAsText(idea);
+    try {
+      await navigator.clipboard.writeText(content);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy:", err);
+    }
+  };
+
+  const handleExportJSON = () => {
+    const blob = new Blob([JSON.stringify(idea, null, 2)], {
+      type: "application/json",
+    });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `idea-${idea.id}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  const handleExportText = () => {
+    const content = formatIdeaAsText(idea);
+    const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `idea-${idea.id}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
       {/* Header */}
       <div className="bg-gray-900 text-white px-6 py-4">
-        <div className="flex items-center gap-2">
-          <span className="text-lg font-bold text-gray-400">#{index + 1}</span>
-          <h3 className="text-xl font-semibold">{idea.name}</h3>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="text-lg font-bold text-gray-400">#{index + 1}</span>
+            <h3 className="text-xl font-semibold">{idea.name}</h3>
+          </div>
+          <div className="flex items-center gap-1">
+            <button
+              onClick={handleCopy}
+              className="p-1.5 text-gray-400 hover:text-white transition-colors rounded"
+              title="Скопировать"
+            >
+              {copied ? <Check className="w-4 h-4 text-green-400" /> : <Copy className="w-4 h-4" />}
+            </button>
+            <button
+              onClick={handleExportJSON}
+              className="p-1.5 text-gray-400 hover:text-white transition-colors rounded"
+              title="Скачать JSON"
+            >
+              <FileJson className="w-4 h-4" />
+            </button>
+            <button
+              onClick={handleExportText}
+              className="p-1.5 text-gray-400 hover:text-white transition-colors rounded"
+              title="Скачать TXT"
+            >
+              <FileText className="w-4 h-4" />
+            </button>
+          </div>
         </div>
       </div>
 

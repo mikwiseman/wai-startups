@@ -68,7 +68,21 @@ export function ProjectCard({
       </div>
 
       {/* Title & Industry */}
-      <h3 className="text-lg font-semibold text-gray-900 mb-1">{project.name}</h3>
+      {project.website ? (
+        <a
+          href={project.website}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group flex items-center gap-1.5 mb-1"
+        >
+          <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 group-hover:underline transition-colors">
+            {project.name}
+          </h3>
+          <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-blue-600 transition-colors" />
+        </a>
+      ) : (
+        <h3 className="text-lg font-semibold text-gray-900 mb-1">{project.name}</h3>
+      )}
       <p className="text-sm text-gray-500 mb-3">{project.industryCategory}</p>
 
       {/* Description */}
