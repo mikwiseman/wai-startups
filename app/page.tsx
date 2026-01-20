@@ -51,10 +51,10 @@ export default function Home() {
             <Sparkles className="w-8 h-8 text-white" />
           </div>
           <h1 className="text-2xl font-bold text-gray-900 mb-2">
-            Генератор стартап-идей
+            Startup Idea Generator
           </h1>
           <p className="text-gray-600">
-            Найдите идеальную идею для вашего стартапа на основе ваших интересов и навыков
+            Find the perfect idea for your startup based on your interests and skills
           </p>
         </div>
 
@@ -62,11 +62,11 @@ export default function Home() {
           {hasExistingSession ? (
             <>
               <div className="text-center text-sm text-gray-500 mb-4">
-                У вас есть незавершённая сессия
+                You have an incomplete session
               </div>
               <Button onClick={handleContinue} className="w-full" size="lg">
                 <ArrowRight className="w-5 h-5 mr-2" />
-                Продолжить
+                Continue
               </Button>
               <Button
                 onClick={handleNewSession}
@@ -75,13 +75,13 @@ export default function Home() {
                 size="lg"
               >
                 <RotateCcw className="w-5 h-5 mr-2" />
-                Начать заново
+                Start Over
               </Button>
             </>
           ) : (
             <Button onClick={handleNewSession} className="w-full" size="lg">
               <Sparkles className="w-5 h-5 mr-2" />
-              Начать
+              Start
             </Button>
           )}
         </div>

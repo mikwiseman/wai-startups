@@ -1,83 +1,83 @@
-export const GENERATE_IDEAS_PROMPT = `Ты опытный предприниматель и венчурный инвестор с 20+ летним опытом. На основе следующей информации о пользователе сгенерируй 5-7 уникальных идей стартапов.
+export const GENERATE_IDEAS_PROMPT = `You are an experienced entrepreneur and venture investor with 20+ years of experience. Based on the following user information, generate 5-7 unique startup ideas.
 
-**Интересы и индустрии:** {industries}
-**Дополнительные интересы:** {customInterests}
-**Опыт пользователя:** {userBackground}
-**Навыки:** {skills}
-**Фокус интереса:** {focusOfInterest}
+**Interests and industries:** {industries}
+**Additional interests:** {customInterests}
+**User background:** {userBackground}
+**Skills:** {skills}
+**Focus of interest:** {focusOfInterest}
 
-**Проекты, которые понравились пользователю:**
+**Projects the user liked:**
 {likedProjects}
 
-**Проекты, которые НЕ понравились пользователю:**
+**Projects the user disliked:**
 {dislikedProjects}
 
-Для каждой идеи укажи:
-1. Название (максимум 4 слова, на русском)
-2. Проблема (1 предложение)
-3. Решение (1 предложение)
-4. Почему сейчас (1 предложение)
+For each idea, provide:
+1. Name (maximum 4 words)
+2. Problem (1 sentence)
+3. Solution (1 sentence)
+4. Why now (1 sentence)
 
-Отвечай СТРОГО в JSON формате. Не добавляй никакого текста до или после JSON.
+Respond STRICTLY in JSON format. Do not add any text before or after JSON.
 
-Формат ответа:
+Response format:
 {
   "ideas": [
     {
       "id": "idea-1",
-      "name": "Название идеи",
-      "problem": "Описание проблемы",
-      "solution": "Описание решения",
-      "whyNow": "Почему именно сейчас"
+      "name": "Idea Name",
+      "problem": "Problem description",
+      "solution": "Solution description",
+      "whyNow": "Why now explanation"
     }
   ]
 }`;
 
-export const FINAL_RECOMMENDATIONS_PROMPT = `Ты опытный предприниматель и венчурный инвестор. На основе ВСЕГО собранного фидбека сгенерируй 10 детальных идей стартапов.
+export const FINAL_RECOMMENDATIONS_PROMPT = `You are an experienced entrepreneur and venture investor. Based on ALL collected feedback, generate 10 detailed startup ideas.
 
-**Интересы и индустрии:** {industries}
-**Дополнительные интересы:** {customInterests}
-**Опыт пользователя:** {userBackground}
-**Навыки:** {skills}
-**Фокус интереса:** {focusOfInterest}
+**Interests and industries:** {industries}
+**Additional interests:** {customInterests}
+**User background:** {userBackground}
+**Skills:** {skills}
+**Focus of interest:** {focusOfInterest}
 
-**Проекты, которые понравились пользователю:**
+**Projects the user liked:**
 {likedProjects}
 
-**Проекты, которые НЕ понравились пользователю:**
+**Projects the user disliked:**
 {dislikedProjects}
 
-**Идеи из первого раунда, которые понравились:**
+**First round ideas the user liked:**
 {likedIdeas}
 
-**Идеи из первого раунда, которые НЕ понравились:**
+**First round ideas the user disliked:**
 {dislikedIdeas}
 
-Для каждой из 10 идей укажи:
-1. Название (максимум 4 слова)
-2. Проблема (1 предложение)
-3. Решение (1 предложение)
-4. Почему сейчас (1 предложение)
-5. Конкурентное преимущество (не более 10 слов)
-6. MVP за 30 дней (список из 3-4 конкретных пунктов)
-7. Первый канал роста (1 предложение)
+For each of the 10 ideas, provide:
+1. Name (maximum 4 words)
+2. Problem (1 sentence)
+3. Solution (1 sentence)
+4. Why now (1 sentence)
+5. Competitive advantage (max 10 words)
+6. MVP in 30 days (list of 3-4 specific items)
+7. First growth channel (1 sentence)
 
-Учитывай паттерны из лайков/дизлайков. Идеи должны быть реалистичными, основанными на навыках пользователя и текущих рыночных трендах.
+Consider patterns from likes/dislikes. Ideas should be realistic, based on user skills and current market trends.
 
-Отвечай СТРОГО в JSON формате. Не добавляй никакого текста до или после JSON.
+Respond STRICTLY in JSON format. Do not add any text before or after JSON.
 
-Формат ответа:
+Response format:
 {
   "ideas": [
     {
       "id": "final-idea-1",
-      "name": "Название идеи",
-      "problem": "Описание проблемы",
-      "solution": "Описание решения",
-      "whyNow": "Почему именно сейчас",
-      "competitiveAdvantage": "Конкурентное преимущество",
-      "mvp30Days": ["Пункт 1", "Пункт 2", "Пункт 3"],
-      "firstGrowthChannel": "Описание канала роста"
+      "name": "Idea Name",
+      "problem": "Problem description",
+      "solution": "Solution description",
+      "whyNow": "Why now explanation",
+      "competitiveAdvantage": "Competitive advantage",
+      "mvp30Days": ["Item 1", "Item 2", "Item 3"],
+      "firstGrowthChannel": "Growth channel description"
     }
   ]
 }`;

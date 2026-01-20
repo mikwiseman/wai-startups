@@ -20,17 +20,17 @@ export default function Step1Page() {
 
   return (
     <WizardLayout
-      title="Шаг 1: Ваши интересы"
-      description="Выберите индустрии, которые вас интересуют"
+      title="Step 1: Your Interests"
+      description="Select industries that interest you"
     >
       <div className="space-y-8">
         {/* Industry selection */}
         <Card variant="bordered">
           <h2 className="text-lg font-semibold text-gray-900 mb-4">
-            Выберите индустрии
+            Select Industries
           </h2>
           <p className="text-gray-600 mb-4">
-            Отметьте одну или несколько индустрий, которые вам интересны
+            Check one or more industries you&apos;re interested in
           </p>
           <IndustryFilterGrid
             selectedIndustries={selectedIndustries}
@@ -38,7 +38,7 @@ export default function Step1Page() {
           />
           {selectedIndustries.length > 0 && (
             <p className="mt-4 text-sm text-gray-500">
-              Выбрано: {selectedIndustries.length}
+              Selected: {selectedIndustries.length}
             </p>
           )}
         </Card>
@@ -46,7 +46,7 @@ export default function Step1Page() {
         {/* Validation message */}
         {!canContinue && (
           <p className="text-sm text-orange-600">
-            Выберите хотя бы одну индустрию, чтобы продолжить
+            Select at least one industry to continue
           </p>
         )}
 

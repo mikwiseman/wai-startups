@@ -115,8 +115,8 @@ export default function Step4Page() {
 
   return (
     <WizardLayout
-      title="Шаг 4: Генерация идей"
-      description="ИИ сгенерирует персонализированные идеи на основе ваших предпочтений"
+      title="Step 4: Idea Generation"
+      description="AI will generate personalized ideas based on your preferences"
     >
       <div className="space-y-6">
         {/* Generate button */}
@@ -124,15 +124,15 @@ export default function Step4Page() {
           <div className="bg-white rounded-xl border border-gray-200 p-8 text-center">
             <Sparkles className="w-12 h-12 text-gray-400 mx-auto mb-4" />
             <h3 className="text-lg font-semibold text-gray-900 mb-2">
-              Готовы к генерации идей?
+              Ready to generate ideas?
             </h3>
             <p className="text-gray-600 mb-6 max-w-md mx-auto">
-              На основе ваших интересов, оценённых проектов и навыков ИИ
-              создаст 5-7 уникальных идей стартапов
+              Based on your interests, rated projects, and skills, AI will create
+              5-7 unique startup ideas
             </p>
             <Button onClick={handleGenerate} size="lg">
               <Sparkles className="w-5 h-5 mr-2" />
-              Сгенерировать идеи
+              Generate Ideas
             </Button>
           </div>
         )}
@@ -152,9 +152,9 @@ export default function Step4Page() {
         {/* Error state */}
         {error && (
           <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700">
-            <p>Ошибка при генерации: {error.message}</p>
+            <p>Generation error: {error.message}</p>
             <Button variant="outline" onClick={handleGenerate} className="mt-2">
-              Попробовать снова
+              Try Again
             </Button>
           </div>
         )}
@@ -166,10 +166,10 @@ export default function Step4Page() {
             <div className="bg-white rounded-lg border border-gray-200 p-4">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm font-medium text-gray-700">
-                  Оцените идеи
+                  Rate Ideas
                 </span>
                 <span className="text-sm text-gray-500">
-                  {totalFeedback} из 2 минимум
+                  {totalFeedback} of 2 minimum
                 </span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
@@ -180,10 +180,10 @@ export default function Step4Page() {
               </div>
               <div className="flex gap-4 mt-3 text-sm">
                 <span className="text-green-600">
-                  👍 Нравится: {likedIdeas.length}
+                  👍 Liked: {likedIdeas.length}
                 </span>
                 <span className="text-red-500">
-                  👎 Не нравится: {dislikedIdeas.length}
+                  👎 Disliked: {dislikedIdeas.length}
                 </span>
               </div>
             </div>
@@ -196,7 +196,7 @@ export default function Step4Page() {
                 disabled={isStreaming}
               >
                 <RefreshCw className="w-4 h-4 mr-2" />
-                Сгенерировать заново
+                Regenerate
               </Button>
             </div>
 
@@ -226,7 +226,7 @@ export default function Step4Page() {
         {/* Validation message */}
         {displayIdeas.length > 0 && !canContinue && (
           <p className="text-sm text-orange-600">
-            Оцените минимум 2 идеи, чтобы продолжить
+            Rate at least 2 ideas to continue
           </p>
         )}
 

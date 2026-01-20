@@ -81,7 +81,7 @@ export function ProjectCard({
               variant={feedbackStatus === "liked" ? "success" : "danger"}
               size="sm"
             >
-              {feedbackStatus === "liked" ? "Нравится" : "Не нравится"}
+              {feedbackStatus === "liked" ? "Liked" : "Disliked"}
             </Badge>
           )}
           {project.batch && (
@@ -128,11 +128,11 @@ export function ProjectCard({
       <div className="grid grid-cols-2 gap-2 mb-4 text-sm">
         <div className="flex items-center gap-1.5 text-gray-600">
           <Users className="w-4 h-4 text-gray-400" />
-          <span>{project.employeeRange} чел.</span>
+          <span>{project.employeeRange} people</span>
         </div>
         <div className="flex items-center gap-1.5 text-gray-600">
           <Calendar className="w-4 h-4 text-gray-400" />
-          <span>с {project.foundingYear}</span>
+          <span>Since {project.foundingYear}</span>
         </div>
         <div className="flex items-center gap-1.5 text-gray-600">
           <Briefcase className="w-4 h-4 text-gray-400" />
@@ -146,7 +146,7 @@ export function ProjectCard({
       {/* Tech Stack (if available) */}
       {project.techStack && project.techStack.length > 0 && (
         <div className="mb-3">
-          <p className="text-xs text-gray-400 mb-1.5">Технологии:</p>
+          <p className="text-xs text-gray-400 mb-1.5">Technologies:</p>
           <div className="flex flex-wrap gap-1">
             {project.techStack.map((tech) => (
               <Badge key={tech} variant="outline" size="sm" className="text-xs">
@@ -175,7 +175,7 @@ export function ProjectCard({
           className="flex-1"
         >
           <ThumbsUp className="w-4 h-4 mr-1.5" />
-          Нравится
+          Like
         </Button>
         <Button
           variant={feedbackStatus === "disliked" ? "danger" : "outline"}
@@ -184,7 +184,7 @@ export function ProjectCard({
           className="flex-1"
         >
           <ThumbsDown className="w-4 h-4 mr-1.5" />
-          Не нравится
+          Dislike
         </Button>
       </div>
     </div>

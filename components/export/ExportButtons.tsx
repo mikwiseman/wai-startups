@@ -28,15 +28,15 @@ export function formatIdeaAsText(idea: DetailedStartupIdea, index?: number): str
     content += `${idea.name}\n`;
     content += "-".repeat(40) + "\n";
   }
-  content += `Проблема: ${idea.problem}\n`;
-  content += `Решение: ${idea.solution}\n`;
-  content += `Почему сейчас: ${idea.whyNow}\n`;
-  content += `Преимущество: ${idea.competitiveAdvantage}\n`;
-  content += `MVP за 30 дней:\n`;
+  content += `Problem: ${idea.problem}\n`;
+  content += `Solution: ${idea.solution}\n`;
+  content += `Why Now: ${idea.whyNow}\n`;
+  content += `Advantage: ${idea.competitiveAdvantage}\n`;
+  content += `MVP in 30 Days:\n`;
   idea.mvp30Days.forEach((item) => {
     content += `  • ${item}\n`;
   });
-  content += `Канал роста: ${idea.firstGrowthChannel}\n`;
+  content += `Growth Channel: ${idea.firstGrowthChannel}\n`;
   return content;
 }
 
@@ -44,20 +44,20 @@ export function ExportButtons({ data }: ExportButtonsProps) {
   const [copied, setCopied] = useState(false);
 
   const generateTextContent = () => {
-    let content = "ГЕНЕРАТОР СТАРТАП-ИДЕЙ\n";
+    let content = "STARTUP IDEA GENERATOR\n";
     content += "=".repeat(50) + "\n\n";
-    content += `Дата: ${new Date().toLocaleDateString("ru-RU")}\n\n`;
+    content += `Date: ${new Date().toLocaleDateString("en-US")}\n\n`;
 
-    content += "ПРОФИЛЬ\n";
+    content += "PROFILE\n";
     content += "-".repeat(30) + "\n";
-    content += `Индустрии: ${data.selectedIndustries.join(", ")}\n`;
+    content += `Industries: ${data.selectedIndustries.join(", ")}\n`;
     if (data.customInterests.length > 0) {
-      content += `Доп. интересы: ${data.customInterests.join(", ")}\n`;
+      content += `Additional interests: ${data.customInterests.join(", ")}\n`;
     }
-    content += `\nНавыки:\n${data.skills}\n`;
-    content += `\nФокус:\n${data.focusOfInterest}\n\n`;
+    content += `\nSkills:\n${data.skills}\n`;
+    content += `\nFocus:\n${data.focusOfInterest}\n\n`;
 
-    content += "РЕКОМЕНДОВАННЫЕ ИДЕИ\n";
+    content += "RECOMMENDED IDEAS\n";
     content += "=".repeat(50) + "\n\n";
 
     data.finalRecommendations.forEach((idea, index) => {
@@ -119,15 +119,15 @@ export function ExportButtons({ data }: ExportButtonsProps) {
         ) : (
           <Copy className="w-4 h-4 mr-2" />
         )}
-        {copied ? "Скопировано!" : "Скопировать всё"}
+        {copied ? "Copied!" : "Copy All"}
       </Button>
       <Button variant="outline" onClick={handleExportJSON}>
         <FileJson className="w-4 h-4 mr-2" />
-        Скачать JSON
+        Download JSON
       </Button>
       <Button variant="outline" onClick={handleExportText}>
         <FileText className="w-4 h-4 mr-2" />
-        Скачать TXT
+        Download TXT
       </Button>
     </div>
   );

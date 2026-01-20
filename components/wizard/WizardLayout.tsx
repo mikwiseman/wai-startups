@@ -15,7 +15,7 @@ export function WizardLayout({ children, title, description }: WizardLayoutProps
   const { currentStep, completedSteps, resetWizard } = useWizardStore();
 
   const handleNewSession = () => {
-    if (confirm("Начать новую сессию? Все текущие данные будут удалены.")) {
+    if (confirm("Start a new session? All current data will be deleted.")) {
       resetWizard();
       window.location.href = "/step-1";
     }
@@ -30,7 +30,7 @@ export function WizardLayout({ children, title, description }: WizardLayoutProps
             <div className="flex items-center gap-2">
               <Sparkles className="w-6 h-6 text-gray-900" />
               <span className="font-semibold text-gray-900">
-                Генератор стартап-идей
+                Startup Idea Generator
               </span>
             </div>
             <button
@@ -38,7 +38,7 @@ export function WizardLayout({ children, title, description }: WizardLayoutProps
               className="flex items-center gap-1.5 px-3 py-1.5 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
             >
               <RotateCcw className="w-4 h-4" />
-              <span>Новая сессия</span>
+              <span>New Session</span>
             </button>
           </div>
           <StepIndicator

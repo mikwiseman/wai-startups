@@ -70,7 +70,7 @@ export default function Step5Page() {
   };
 
   const handleStartOver = () => {
-    if (confirm("Вы уверены, что хотите начать заново? Все данные будут удалены.")) {
+    if (confirm("Are you sure you want to start over? All data will be deleted.")) {
       resetWizard();
       window.location.href = "/step-1";
     }
@@ -81,8 +81,8 @@ export default function Step5Page() {
 
   return (
     <WizardLayout
-      title="Шаг 5: Финальные рекомендации"
-      description="ИИ сгенерирует 10 детальных идей с планом действий"
+      title="Step 5: Final Recommendations"
+      description="AI will generate 10 detailed ideas with action plans"
     >
       <div className="space-y-6">
         {/* Generate button */}
@@ -90,15 +90,15 @@ export default function Step5Page() {
           <div className="bg-white rounded-xl border border-gray-200 p-8 text-center">
             <Sparkles className="w-12 h-12 text-gray-400 mx-auto mb-4" />
             <h3 className="text-lg font-semibold text-gray-900 mb-2">
-              Финальный этап!
+              Final Stage!
             </h3>
             <p className="text-gray-600 mb-6 max-w-md mx-auto">
-              На основе всего собранного фидбека ИИ создаст 10 детальных идей
-              с конкретными шагами для реализации MVP
+              Based on all collected feedback, AI will create 10 detailed ideas
+              with concrete steps for MVP implementation
             </p>
             <Button onClick={handleGenerate} size="lg">
               <Sparkles className="w-5 h-5 mr-2" />
-              Получить рекомендации
+              Get Recommendations
             </Button>
           </div>
         )}
@@ -117,9 +117,9 @@ export default function Step5Page() {
         {/* Error state */}
         {error && (
           <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700">
-            <p>Ошибка при генерации: {error.message}</p>
+            <p>Generation error: {error.message}</p>
             <Button variant="outline" onClick={handleGenerate} className="mt-2">
-              Попробовать снова
+              Try Again
             </Button>
           </div>
         )}
@@ -133,11 +133,11 @@ export default function Step5Page() {
               </div>
               <div className="flex-1">
                 <h3 className="text-lg font-semibold text-green-900 mb-1">
-                  Готово! Ваши идеи сгенерированы
+                  Done! Your ideas have been generated
                 </h3>
                 <p className="text-green-700 mb-4">
-                  Ниже представлены 10 персонализированных идей стартапов.
-                  Сохраните их для дальнейшей работы.
+                  Below are 10 personalized startup ideas.
+                  Save them for further work.
                 </p>
                 <ExportButtons
                   data={{
@@ -160,7 +160,7 @@ export default function Step5Page() {
             {/* Regenerate button */}
             <div className="flex justify-between items-center">
               <h2 className="text-xl font-semibold text-gray-900">
-                {displayIdeas.length} идей для вас
+                {displayIdeas.length} ideas for you
               </h2>
               <Button
                 variant="outline"
@@ -168,7 +168,7 @@ export default function Step5Page() {
                 disabled={isStreaming}
               >
                 <RefreshCw className="w-4 h-4 mr-2" />
-                Сгенерировать заново
+                Regenerate
               </Button>
             </div>
 
@@ -194,7 +194,7 @@ export default function Step5Page() {
             <div className="flex justify-center">
               <Button variant="ghost" onClick={handleStartOver}>
                 <RotateCcw className="w-4 h-4 mr-2" />
-                Начать заново
+                Start Over
               </Button>
             </div>
           </div>

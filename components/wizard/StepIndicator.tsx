@@ -10,11 +10,11 @@ interface Step {
 }
 
 const STEPS: Step[] = [
-  { number: 1, title: "Интересы", description: "Выберите индустрии" },
-  { number: 2, title: "Исследование", description: "Оцените проекты" },
-  { number: 3, title: "Профиль", description: "Расскажите о себе" },
-  { number: 4, title: "Идеи", description: "Генерация идей" },
-  { number: 5, title: "Результат", description: "Финальные рекомендации" },
+  { number: 1, title: "Interests", description: "Select industries" },
+  { number: 2, title: "Research", description: "Rate projects" },
+  { number: 3, title: "Profile", description: "Tell us about yourself" },
+  { number: 4, title: "Ideas", description: "Generate ideas" },
+  { number: 5, title: "Results", description: "Final recommendations" },
 ];
 
 interface StepIndicatorProps {

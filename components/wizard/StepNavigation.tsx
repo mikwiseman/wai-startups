@@ -40,8 +40,8 @@ export function StepNavigation({
 
   const getNextLabel = () => {
     if (nextLabel) return nextLabel;
-    if (currentStep === 5) return "Завершить";
-    return "Продолжить";
+    if (currentStep === 5) return "Finish";
+    return "Continue";
   };
 
   return (
@@ -49,7 +49,7 @@ export function StepNavigation({
       {showBack && currentStep > 1 ? (
         <Button variant="ghost" onClick={handleBack} disabled={isLoading}>
           <ArrowLeft className="w-4 h-4 mr-2" />
-          Назад
+          Back
         </Button>
       ) : (
         <div />

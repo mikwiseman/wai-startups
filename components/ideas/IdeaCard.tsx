@@ -37,7 +37,7 @@ export function IdeaCard({
         </div>
         {feedbackStatus && (
           <Badge variant={feedbackStatus === "liked" ? "success" : "danger"}>
-            {feedbackStatus === "liked" ? "Нравится" : "Не нравится"}
+            {feedbackStatus === "liked" ? "Liked" : "Disliked"}
           </Badge>
         )}
       </div>
@@ -49,7 +49,7 @@ export function IdeaCard({
             <Target className="w-4 h-4 text-red-600" />
           </div>
           <div>
-            <p className="text-sm font-medium text-gray-500 mb-1">Проблема</p>
+            <p className="text-sm font-medium text-gray-500 mb-1">Problem</p>
             <p className="text-gray-700">{idea.problem}</p>
           </div>
         </div>
@@ -59,7 +59,7 @@ export function IdeaCard({
             <Lightbulb className="w-4 h-4 text-green-600" />
           </div>
           <div>
-            <p className="text-sm font-medium text-gray-500 mb-1">Решение</p>
+            <p className="text-sm font-medium text-gray-500 mb-1">Solution</p>
             <p className="text-gray-700">{idea.solution}</p>
           </div>
         </div>
@@ -69,7 +69,7 @@ export function IdeaCard({
             <Clock className="w-4 h-4 text-blue-600" />
           </div>
           <div>
-            <p className="text-sm font-medium text-gray-500 mb-1">Почему сейчас</p>
+            <p className="text-sm font-medium text-gray-500 mb-1">Why Now</p>
             <p className="text-gray-700">{idea.whyNow}</p>
           </div>
         </div>
@@ -84,7 +84,7 @@ export function IdeaCard({
           className="flex-1"
         >
           <ThumbsUp className="w-4 h-4 mr-1.5" />
-          Нравится
+          Like
         </Button>
         <Button
           variant={feedbackStatus === "disliked" ? "danger" : "outline"}
@@ -93,7 +93,7 @@ export function IdeaCard({
           className="flex-1"
         >
           <ThumbsDown className="w-4 h-4 mr-1.5" />
-          Не нравится
+          Dislike
         </Button>
       </div>
     </div>

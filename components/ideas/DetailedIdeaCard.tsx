@@ -64,21 +64,21 @@ export function DetailedIdeaCard({ idea, index }: DetailedIdeaCardProps) {
             <button
               onClick={handleCopy}
               className="p-1.5 text-gray-400 hover:text-white transition-colors rounded"
-              title="Скопировать"
+              title="Copy"
             >
               {copied ? <Check className="w-4 h-4 text-green-400" /> : <Copy className="w-4 h-4" />}
             </button>
             <button
               onClick={handleExportJSON}
               className="p-1.5 text-gray-400 hover:text-white transition-colors rounded"
-              title="Скачать JSON"
+              title="Download JSON"
             >
               <FileJson className="w-4 h-4" />
             </button>
             <button
               onClick={handleExportText}
               className="p-1.5 text-gray-400 hover:text-white transition-colors rounded"
-              title="Скачать TXT"
+              title="Download TXT"
             >
               <FileText className="w-4 h-4" />
             </button>
@@ -93,7 +93,7 @@ export function DetailedIdeaCard({ idea, index }: DetailedIdeaCardProps) {
             <Target className="w-5 h-5 text-red-600" />
           </div>
           <div>
-            <p className="text-sm font-medium text-gray-500 mb-1">Проблема</p>
+            <p className="text-sm font-medium text-gray-500 mb-1">Problem</p>
             <p className="text-gray-800">{idea.problem}</p>
           </div>
         </div>
@@ -103,7 +103,7 @@ export function DetailedIdeaCard({ idea, index }: DetailedIdeaCardProps) {
             <Lightbulb className="w-5 h-5 text-green-600" />
           </div>
           <div>
-            <p className="text-sm font-medium text-gray-500 mb-1">Решение</p>
+            <p className="text-sm font-medium text-gray-500 mb-1">Solution</p>
             <p className="text-gray-800">{idea.solution}</p>
           </div>
         </div>
@@ -113,7 +113,7 @@ export function DetailedIdeaCard({ idea, index }: DetailedIdeaCardProps) {
             <Clock className="w-5 h-5 text-blue-600" />
           </div>
           <div>
-            <p className="text-sm font-medium text-gray-500 mb-1">Почему сейчас</p>
+            <p className="text-sm font-medium text-gray-500 mb-1">Why Now</p>
             <p className="text-gray-800">{idea.whyNow}</p>
           </div>
         </div>
@@ -124,7 +124,7 @@ export function DetailedIdeaCard({ idea, index }: DetailedIdeaCardProps) {
           </div>
           <div>
             <p className="text-sm font-medium text-gray-500 mb-1">
-              Конкурентное преимущество
+              Competitive Advantage
             </p>
             <p className="text-gray-800 font-medium">{idea.competitiveAdvantage}</p>
           </div>
@@ -135,7 +135,7 @@ export function DetailedIdeaCard({ idea, index }: DetailedIdeaCardProps) {
             <Rocket className="w-5 h-5 text-purple-600" />
           </div>
           <div>
-            <p className="text-sm font-medium text-gray-500 mb-2">MVP за 30 дней</p>
+            <p className="text-sm font-medium text-gray-500 mb-2">MVP in 30 Days</p>
             <ul className="space-y-1.5">
               {idea.mvp30Days.map((item, idx) => (
                 <li key={idx} className="flex items-start gap-2 text-gray-800">
@@ -153,7 +153,7 @@ export function DetailedIdeaCard({ idea, index }: DetailedIdeaCardProps) {
           </div>
           <div>
             <p className="text-sm font-medium text-gray-500 mb-1">
-              Первый канал роста
+              First Growth Channel
             </p>
             <p className="text-gray-800">{idea.firstGrowthChannel}</p>
           </div>

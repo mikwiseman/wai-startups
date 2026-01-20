@@ -106,8 +106,8 @@ export default function Step2Page() {
 
   return (
     <WizardLayout
-      title="Шаг 2: Исследование рынка"
-      description="Оцените существующие проекты — это поможет нам понять ваши предпочтения"
+      title="Step 2: Market Research"
+      description="Rate existing projects to help us understand your preferences"
     >
       <div className="space-y-6">
         {/* Search and Filters */}
@@ -117,7 +117,7 @@ export default function Step2Page() {
             <Input
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Поиск по названию или тегам..."
+              placeholder="Search by name or tags..."
               className="pl-10"
             />
           </div>
@@ -127,7 +127,7 @@ export default function Step2Page() {
             className="shrink-0"
           >
             <Filter className="w-4 h-4 mr-2" />
-            Фильтры
+            Filters
             {selectedStages.length > 0 && (
               <Badge variant="info" size="sm" className="ml-2">
                 {selectedStages.length}
@@ -140,13 +140,13 @@ export default function Step2Page() {
         {showFilters && (
           <div className="bg-gray-50 rounded-lg p-4 space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-sm font-medium text-gray-700">Стадия</span>
+              <span className="text-sm font-medium text-gray-700">Stage</span>
               {selectedStages.length > 0 && (
                 <button
                   onClick={() => setSelectedStages([])}
                   className="text-sm text-gray-500 hover:text-gray-700"
                 >
-                  Сбросить
+                  Reset
                 </button>
               )}
             </div>
@@ -178,10 +178,10 @@ export default function Step2Page() {
         <div className="bg-white rounded-lg border border-gray-200 p-4">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm font-medium text-gray-700">
-              Ваш прогресс
+              Your Progress
             </span>
             <span className="text-sm text-gray-500">
-              {totalFeedback} из 3 минимум
+              {totalFeedback} of 3 minimum
             </span>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2">
@@ -192,10 +192,10 @@ export default function Step2Page() {
           </div>
           <div className="flex gap-4 mt-3 text-sm">
             <span className="text-green-600">
-              👍 Нравится: {likedProjects.length}
+              👍 Liked: {likedProjects.length}
             </span>
             <span className="text-red-500">
-              👎 Не нравится: {dislikedProjects.length}
+              👎 Disliked: {dislikedProjects.length}
             </span>
           </div>
         </div>
@@ -215,14 +215,14 @@ export default function Step2Page() {
 
         {filteredProjects.length === 0 && (
           <div className="text-center py-12 text-gray-500">
-            <p>Проекты не найдены. Попробуйте изменить фильтры.</p>
+            <p>No projects found. Try changing the filters.</p>
           </div>
         )}
 
         {/* Validation message */}
         {!canContinue && (
           <p className="text-sm text-orange-600">
-            Оцените минимум 3 проекта, чтобы продолжить
+            Rate at least 3 projects to continue
           </p>
         )}
 

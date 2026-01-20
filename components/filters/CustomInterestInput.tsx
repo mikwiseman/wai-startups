@@ -39,7 +39,7 @@ export function CustomInterestInput({
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="Например: IoT, Умные устройства..."
+          placeholder="For example: IoT, Smart devices..."
           className="flex-1"
         />
         <Button
@@ -49,7 +49,7 @@ export function CustomInterestInput({
           disabled={!inputValue.trim()}
         >
           <Plus className="w-4 h-4 mr-1" />
-          Добавить
+          Add
         </Button>
       </div>
 

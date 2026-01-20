@@ -28,13 +28,13 @@ export function IdeaFeedbackModal({
 
   const title =
     feedbackType === "like"
-      ? `Что вам нравится в "${ideaName}"?`
-      : `Что вам не нравится в "${ideaName}"?`;
+      ? `What do you like about "${ideaName}"?`
+      : `What don't you like about "${ideaName}"?`;
 
   const placeholder =
     feedbackType === "like"
-      ? "Например: Понятная проблема, интересный рынок, могу быстро создать MVP..."
-      : "Например: Слишком конкурентный рынок, не моя экспертиза...";
+      ? "For example: Clear problem, interesting market, I can quickly create MVP..."
+      : "For example: Too competitive market, not my expertise...";
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title={title} size="md">
@@ -48,10 +48,10 @@ export function IdeaFeedbackModal({
         />
         <div className="flex justify-end gap-2">
           <Button variant="ghost" onClick={onClose}>
-            Отмена
+            Cancel
           </Button>
           <Button onClick={handleSubmit} disabled={!reason.trim()}>
-            Сохранить
+            Save
           </Button>
         </div>
       </div>

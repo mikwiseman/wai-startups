@@ -28,13 +28,13 @@ export function FeedbackModal({
 
   const title =
     feedbackType === "like"
-      ? `Что вам нравится в ${projectName}?`
-      : `Что вам не нравится в ${projectName}?`;
+      ? `What do you like about ${projectName}?`
+      : `What don't you like about ${projectName}?`;
 
   const placeholder =
     feedbackType === "like"
-      ? "Например: Интересная бизнес-модель, актуальная проблема..."
-      : "Например: Слишком сложный рынок, не мой профиль...";
+      ? "For example: Interesting business model, relevant problem..."
+      : "For example: Too complex market, not my profile...";
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title={title} size="md">
@@ -48,10 +48,10 @@ export function FeedbackModal({
         />
         <div className="flex justify-end gap-2">
           <Button variant="ghost" onClick={onClose}>
-            Отмена
+            Cancel
           </Button>
           <Button onClick={handleSubmit} disabled={!reason.trim()}>
-            Сохранить
+            Save
           </Button>
         </div>
       </div>
