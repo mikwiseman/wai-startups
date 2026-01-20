@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { WizardLayout, StepNavigation } from "@/components/wizard";
 import { IdeaCard } from "@/components/ideas";
 import { IdeaFeedbackModal } from "@/components/ideas/IdeaFeedbackModal";
-import { Button, SkeletonIdeaCard } from "@/components/ui";
+import { Button, SkeletonIdeaCard, FunLoader } from "@/components/ui";
 import { useWizardStore, useStep4Valid } from "@/store/useWizardStore";
 import { useStreamingResponse, parseIdeasFromResponse } from "@/hooks/useStreamingResponse";
 import { StartupIdea } from "@/types/wizard";
@@ -140,12 +140,7 @@ export default function Step4Page() {
         {/* Loading state */}
         {isStreaming && displayIdeas.length === 0 && (
           <div className="space-y-4">
-            <div className="flex items-center gap-2 text-gray-600">
-              <div className="animate-spin">
-                <RefreshCw className="w-5 h-5" />
-              </div>
-              <span>Генерируем идеи...</span>
-            </div>
+            <FunLoader />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <SkeletonIdeaCard />
               <SkeletonIdeaCard />
@@ -221,8 +216,8 @@ export default function Step4Page() {
 
             {/* Streaming indicator */}
             {isStreaming && (
-              <div className="text-center text-gray-500 text-sm">
-                <span className="streaming-cursor">Генерация...</span>
+              <div className="flex justify-center">
+                <FunLoader />
               </div>
             )}
           </>
