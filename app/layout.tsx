@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Генератор стартап-идей",
-  description: "Персонализированный ИИ-помощник для генерации идей стартапов",
+  title: "Startup Idea Generator",
+  description: "Personalized AI assistant for generating startup ideas",
 };
 
 export default function RootLayout({
@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru">
+    <html lang="en">
       <body className="antialiased min-h-screen bg-gray-50">
         {children}
       </body>

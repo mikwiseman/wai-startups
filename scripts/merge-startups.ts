@@ -2,7 +2,7 @@
  * Merge and Map Startups Script
  * Converts YC companies to the final startups.json format with:
  * - Industry mapping to our 22 industries
- * - Russian descriptions (translated via Claude API)
+ * - English descriptions (translated via Claude API)
  * - Proper formatting for the app
  */
 
@@ -146,27 +146,27 @@ const INDUSTRY_MAP: Record<string, string> = {
 
 // Region mapping
 const REGION_MAP: Record<string, { country: string; region: string }> = {
-  'United States of America': { country: 'США', region: 'North America' },
-  'America / Canada': { country: 'США', region: 'North America' },
-  'Canada': { country: 'Канада', region: 'North America' },
-  'United Kingdom': { country: 'Великобритания', region: 'Western Europe' },
-  'Germany': { country: 'Германия', region: 'Western Europe' },
-  'France': { country: 'Франция', region: 'Western Europe' },
-  'Europe': { country: 'Европа', region: 'Western Europe' },
-  'India': { country: 'Индия', region: 'Asia Pacific' },
-  'South Asia': { country: 'Индия', region: 'Asia Pacific' },
-  'China': { country: 'Китай', region: 'Asia Pacific' },
-  'Singapore': { country: 'Сингапур', region: 'Asia Pacific' },
-  'Southeast Asia': { country: 'Сингапур', region: 'Asia Pacific' },
-  'Japan': { country: 'Япония', region: 'Asia Pacific' },
-  'South Korea': { country: 'Южная Корея', region: 'Asia Pacific' },
-  'Australia': { country: 'Австралия', region: 'Asia Pacific' },
-  'Brazil': { country: 'Бразилия', region: 'Latin America' },
-  'Latin America': { country: 'Бразилия', region: 'Latin America' },
-  'Israel': { country: 'Израиль', region: 'Middle East' },
-  'Middle East and North Africa': { country: 'ОАЭ', region: 'Middle East' },
-  'Africa': { country: 'Африка', region: 'Africa' },
-  'Remote': { country: 'США', region: 'North America' },
+  'United States of America': { country: 'USA', region: 'North America' },
+  'America / Canada': { country: 'USA', region: 'North America' },
+  'Canada': { country: 'Canada', region: 'North America' },
+  'United Kingdom': { country: 'United Kingdom', region: 'Western Europe' },
+  'Germany': { country: 'Germany', region: 'Western Europe' },
+  'France': { country: 'France', region: 'Western Europe' },
+  'Europe': { country: 'Europe', region: 'Western Europe' },
+  'India': { country: 'India', region: 'Asia Pacific' },
+  'South Asia': { country: 'India', region: 'Asia Pacific' },
+  'China': { country: 'China', region: 'Asia Pacific' },
+  'Singapore': { country: 'Singapore', region: 'Asia Pacific' },
+  'Southeast Asia': { country: 'Singapore', region: 'Asia Pacific' },
+  'Japan': { country: 'Japan', region: 'Asia Pacific' },
+  'South Korea': { country: 'South Korea', region: 'Asia Pacific' },
+  'Australia': { country: 'Australia', region: 'Asia Pacific' },
+  'Brazil': { country: 'Brazil', region: 'Latin America' },
+  'Latin America': { country: 'Brazil', region: 'Latin America' },
+  'Israel': { country: 'Israel', region: 'Middle East' },
+  'Middle East and North Africa': { country: 'UAE', region: 'Middle East' },
+  'Africa': { country: 'Africa', region: 'Africa' },
+  'Remote': { country: 'USA', region: 'North America' },
 };
 
 interface YCCompany {
@@ -291,23 +291,23 @@ function mapRegion(regions: string[], location: string): { country: string; regi
   // Parse location string (e.g., "San Francisco, CA, USA")
   const locationLower = location.toLowerCase();
   if (locationLower.includes('usa') || locationLower.includes('united states') || locationLower.includes(', ca') || locationLower.includes(', ny')) {
-    return { country: 'США', region: 'North America' };
+    return { country: 'USA', region: 'North America' };
   }
   if (locationLower.includes('canada')) {
-    return { country: 'Канада', region: 'North America' };
+    return { country: 'Canada', region: 'North America' };
   }
   if (locationLower.includes('uk') || locationLower.includes('london') || locationLower.includes('united kingdom')) {
-    return { country: 'Великобритания', region: 'Western Europe' };
+    return { country: 'United Kingdom', region: 'Western Europe' };
   }
   if (locationLower.includes('india') || locationLower.includes('bangalore') || locationLower.includes('mumbai')) {
-    return { country: 'Индия', region: 'Asia Pacific' };
+    return { country: 'India', region: 'Asia Pacific' };
   }
   if (locationLower.includes('germany') || locationLower.includes('berlin')) {
-    return { country: 'Германия', region: 'Western Europe' };
+    return { country: 'Germany', region: 'Western Europe' };
   }
 
   // Default to USA
-  return { country: 'США', region: 'North America' };
+  return { country: 'USA', region: 'North America' };
 }
 
 function getEmployeeRange(teamSize: number | null): string {
@@ -337,11 +337,11 @@ async function translateDescriptions(companies: { name: string; description: str
   const translations = new Map<string, string>();
   const batchSize = 20;
 
-  console.log(`\nTranslating ${companies.length} descriptions to Russian...`);
+  console.log(`\nProcessing ${companies.length} descriptions...`);
 
   for (let i = 0; i < companies.length; i += batchSize) {
     const batch = companies.slice(i, i + batchSize);
-    const prompt = `Translate the following startup descriptions to Russian. Keep them concise (1-2 sentences max). Output format: one translation per line, numbered.
+    const prompt = `Summarize the following startup descriptions concisely (1-2 sentences max). Output format: one summary per line, numbered.
 
 ${batch.map((c, idx) => `${idx + 1}. ${c.name}: ${c.description}`).join('\n')}`;
 
@@ -356,20 +356,20 @@ ${batch.map((c, idx) => `${idx + 1}. ${c.name}: ${c.description}`).join('\n')}`;
       if (content.type === 'text') {
         const lines = content.text.split('\n').filter(l => l.trim());
         lines.forEach((line, idx) => {
-          // Extract translation, removing the number prefix
-          const translation = line.replace(/^\d+\.\s*([^:]+:\s*)?/, '').trim();
-          if (batch[idx] && translation) {
-            translations.set(batch[idx].name, translation);
+          // Extract summary, removing the number prefix
+          const summary = line.replace(/^\d+\.\s*([^:]+:\s*)?/, '').trim();
+          if (batch[idx] && summary) {
+            translations.set(batch[idx].name, summary);
           }
         });
       }
 
-      console.log(`  Translated ${Math.min(i + batchSize, companies.length)}/${companies.length}`);
+      console.log(`  Processed ${Math.min(i + batchSize, companies.length)}/${companies.length}`);
 
       // Rate limiting
       await new Promise(resolve => setTimeout(resolve, 500));
     } catch (error) {
-      console.error(`  Error translating batch ${i / batchSize + 1}:`, error);
+      console.error(`  Error processing batch ${i / batchSize + 1}:`, error);
       // Use original descriptions as fallback
       batch.forEach(c => translations.set(c.name, c.description));
     }
@@ -399,7 +399,7 @@ async function main() {
       id: yc.id,
       name: yc.name,
       website: yc.website.startsWith('http') ? yc.website : `https://${yc.website}`,
-      description: yc.description, // Will be translated later
+      description: yc.description, // Will be processed later
       industry,
       industryCategory: category,
       country,
@@ -437,20 +437,20 @@ async function main() {
     console.log('\nWarning: These industries have <5 startups:', missingOrLow);
   }
 
-  // Translate descriptions (optional - can be skipped if API key not available)
+  // Process descriptions (optional - can be skipped if API key not available)
   if (process.env.ANTHROPIC_API_KEY) {
-    const toTranslate = startups.map(s => ({ name: s.name, description: s.description }));
-    const translations = await translateDescriptions(toTranslate);
+    const toProcess = startups.map(s => ({ name: s.name, description: s.description }));
+    const processed = await translateDescriptions(toProcess);
 
-    // Apply translations
+    // Apply processed descriptions
     for (const startup of startups) {
-      const translated = translations.get(startup.name);
-      if (translated) {
-        startup.description = translated;
+      const desc = processed.get(startup.name);
+      if (desc) {
+        startup.description = desc;
       }
     }
   } else {
-    console.log('\nSkipping translation (no ANTHROPIC_API_KEY)');
+    console.log('\nSkipping description processing (no ANTHROPIC_API_KEY)');
   }
 
   // Limit to ~300 best startups (well-distributed across industries)

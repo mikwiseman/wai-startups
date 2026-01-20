@@ -4,16 +4,16 @@ import { useState, useEffect } from "react";
 import { RefreshCw } from "lucide-react";
 
 const LOADING_MESSAGES = [
-  { emoji: "🧠", text: "Анализируем рынок..." },
-  { emoji: "💡", text: "Генерируем идеи..." },
-  { emoji: "🚀", text: "Соединяемся с космосом..." },
-  { emoji: "🔮", text: "Консультируемся с оракулом..." },
-  { emoji: "⚡", text: "Активируем нейросети..." },
-  { emoji: "🎯", text: "Ищем product-market fit..." },
-  { emoji: "🦄", text: "Приманиваем единорогов..." },
-  { emoji: "📊", text: "Считаем юнит-экономику..." },
-  { emoji: "🌟", text: "Добавляем щепотку магии..." },
-  { emoji: "🎪", text: "Жонглируем бизнес-моделями..." },
+  { emoji: "🧠", text: "Analyzing market..." },
+  { emoji: "💡", text: "Generating ideas..." },
+  { emoji: "🚀", text: "Connecting to the cosmos..." },
+  { emoji: "🔮", text: "Consulting the oracle..." },
+  { emoji: "⚡", text: "Activating neural networks..." },
+  { emoji: "🎯", text: "Finding product-market fit..." },
+  { emoji: "🦄", text: "Attracting unicorns..." },
+  { emoji: "📊", text: "Calculating unit economics..." },
+  { emoji: "🌟", text: "Adding a pinch of magic..." },
+  { emoji: "🎪", text: "Juggling business models..." },
 ];
 
 interface FunLoaderProps {

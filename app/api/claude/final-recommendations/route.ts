@@ -69,14 +69,14 @@ export async function POST(request: Request) {
       "{industries}",
       industriesNames
     )
-      .replace("{customInterests}", body.customInterests.join(", ") || "Нет")
-      .replace("{userBackground}", body.userBackground || "Не указан")
+      .replace("{customInterests}", body.customInterests.join(", ") || "None")
+      .replace("{userBackground}", body.userBackground || "Not specified")
       .replace("{skills}", body.skills)
       .replace("{focusOfInterest}", body.focusOfInterest)
-      .replace("{likedProjects}", likedProjectsText || "Нет")
-      .replace("{dislikedProjects}", dislikedProjectsText || "Нет")
-      .replace("{likedIdeas}", likedIdeasText || "Нет")
-      .replace("{dislikedIdeas}", dislikedIdeasText || "Нет");
+      .replace("{likedProjects}", likedProjectsText || "None")
+      .replace("{dislikedProjects}", dislikedProjectsText || "None")
+      .replace("{likedIdeas}", likedIdeasText || "None")
+      .replace("{dislikedIdeas}", dislikedIdeasText || "None");
 
     // Create a streaming response
     const stream = await anthropic.messages.stream({

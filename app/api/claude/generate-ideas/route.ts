@@ -46,12 +46,12 @@ export async function POST(request: Request) {
       .join("\n");
 
     const prompt = GENERATE_IDEAS_PROMPT.replace("{industries}", industriesNames)
-      .replace("{customInterests}", body.customInterests.join(", ") || "Нет")
-      .replace("{userBackground}", body.userBackground || "Не указан")
+      .replace("{customInterests}", body.customInterests.join(", ") || "None")
+      .replace("{userBackground}", body.userBackground || "Not specified")
       .replace("{skills}", body.skills)
       .replace("{focusOfInterest}", body.focusOfInterest)
-      .replace("{likedProjects}", likedProjectsText || "Нет")
-      .replace("{dislikedProjects}", dislikedProjectsText || "Нет");
+      .replace("{likedProjects}", likedProjectsText || "None")
+      .replace("{dislikedProjects}", dislikedProjectsText || "None");
 
     // Create a streaming response
     const stream = await anthropic.messages.stream({
